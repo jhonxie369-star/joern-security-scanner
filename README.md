@@ -27,19 +27,31 @@ joern-security-scanner/
 │   ├── rules/                 # JS安全规则
 │   └── lib/                   # 数据流分析库
 ├── utils/                     # 通用工具
-├── scan-java.sh              # Java扫描脚本
-└── README.md                 # 项目文档
+└── README.md                  # 项目文档
 ```
 
 ## 🚀 快速开始
 
+### 前置要求
+
+本项目需要先安装Joern代码分析平台：
+
+```bash
+# 1. 安装Joern (需要Java 11+)
+curl -L "https://github.com/joernio/joern/releases/latest/download/joern-install.sh" | sudo bash
+
+# 2. 验证安装
+joern --version
+
+# 3. 或者使用Docker方式
+docker pull joernio/joern
+```
+
+详细安装说明请参考：https://github.com/joernio/joern
+
 ### 1. Java项目扫描
 
 ```bash
-# 使用扫描脚本
-./scan-java.sh /path/to/java/project
-
-# 或直接使用Joern
 joern --script java/JavaSecurityScanner.sc --param projectPath=/path/to/project
 ```
 
