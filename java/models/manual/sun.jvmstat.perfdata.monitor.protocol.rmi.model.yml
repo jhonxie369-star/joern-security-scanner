@@ -1,0 +1,6 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: sinkModel
+    data:
+      - ["sun.jvmstat.perfdata.monitor.protocol.rmi", "RemoteVmManager", False, "RemoteVmManager", "(RemoteHost,String)", "", "Argument[1]", "credentials-username", "hq-generated"]

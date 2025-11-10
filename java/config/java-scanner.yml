@@ -1,0 +1,48 @@
+name: joern-java-security-scanner
+version: 1.0.0
+language: java
+
+# Java模型路径配置
+modelPaths:
+  manual: "java/models/manual"
+  generated: "java/models/generated"  
+  experimental: "java/models/experimental"
+
+# 支持的Java安全规则
+rules:
+  java/path-injection:
+    cwe: "CWE-022"
+    severity: "HIGH"
+    description: "路径遍历漏洞"
+    
+  java/sql-injection:
+    cwe: "CWE-089" 
+    severity: "CRITICAL"
+    description: "SQL注入漏洞"
+    
+  java/xss:
+    cwe: "CWE-079"
+    severity: "HIGH" 
+    description: "跨站脚本漏洞"
+    
+  java/command-injection:
+    cwe: "CWE-078"
+    severity: "CRITICAL"
+    description: "命令注入漏洞"
+
+# Java威胁源配置
+threatSources:
+  http:
+    - "HttpServletRequest.getParameter"
+    - "HttpServletRequest.getHeader"
+    - "HttpServletRequest.getQueryString"
+  
+  spring:
+    - "@RequestParam"
+    - "@PathVariable" 
+    - "@RequestBody"
+    - "@RequestHeader"
+    
+  upload:
+    - "MultipartFile.getOriginalFilename"
+    - "MultipartFile.getName"

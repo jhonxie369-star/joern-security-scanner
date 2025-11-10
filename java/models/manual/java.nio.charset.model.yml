@@ -1,0 +1,6 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: neutralModel
+    data:
+      - ["java.nio.charset", "Charset", "name", "()", "summary", "manual"]

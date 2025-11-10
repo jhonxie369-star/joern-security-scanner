@@ -1,0 +1,135 @@
+rules:
+  sql-injection:
+    id: "javascript/sql-injection"
+    name: "SQL注入漏洞"
+    description: "检测通过用户输入构建SQL查询的漏洞"
+    severity: "CRITICAL"
+    cwe: ["CWE-89"]
+    cvss: 9.0
+    enabled: true
+    sources:
+      - "req.query"
+      - "req.body" 
+      - "req.params"
+      - "process.argv"
+    sinks:
+      - "query"
+      - "execute"
+      - "run"
+    
+  xss:
+    id: "javascript/xss"
+    name: "跨站脚本攻击(XSS)"
+    description: "检测未经转义的用户输入直接输出到HTML的漏洞"
+    severity: "HIGH"
+    cwe: ["CWE-79"]
+    cvss: 7.0
+    enabled: true
+    sources:
+      - "req.query"
+      - "req.body"
+      - "req.params"
+    sinks:
+      - "innerHTML"
+      - "outerHTML"
+      - "document.write"
+      - "res.send"
+      
+  path-injection:
+    id: "javascript/path-injection"
+    name: "路径遍历漏洞"
+    description: "检测使用用户输入构建文件路径的漏洞"
+    severity: "HIGH"
+    cwe: ["CWE-22"]
+    cvss: 7.0
+    enabled: true
+    sources:
+      - "req.query"
+      - "req.body"
+      - "req.params"
+    sinks:
+      - "fs.readFile"
+      - "fs.writeFile"
+      - "fs.readFileSync"
+      - "fs.writeFileSync"
+      
+  command-injection:
+    id: "javascript/command-injection"
+    name: "命令注入漏洞"
+    description: "检测使用用户输入执行系统命令的漏洞"
+    severity: "CRITICAL"
+    cwe: ["CWE-78"]
+    cvss: 9.0
+    enabled: true
+    sources:
+      - "req.query"
+      - "req.body"
+      - "req.params"
+    sinks:
+      - "child_process.exec"
+      - "child_process.spawn"
+      - "child_process.execSync"
+      
+  prototype-pollution:
+    id: "javascript/prototype-pollution"
+    name: "原型污染漏洞"
+    description: "检测可能导致原型污染的对象合并操作"
+    severity: "HIGH"
+    cwe: ["CWE-1321"]
+    cvss: 7.0
+    enabled: true
+    patterns:
+      - "__proto__"
+      - "prototype"
+      - "constructor"
+    sinks:
+      - "Object.assign"
+      - "_.merge"
+      - "$.extend"
+      
+  code-injection:
+    id: "javascript/code-injection"
+    name: "代码注入漏洞"
+    description: "检测使用用户输入动态执行代码的漏洞"
+    severity: "CRITICAL"
+    cwe: ["CWE-94"]
+    cvss: 9.0
+    enabled: true
+    sources:
+      - "req.query"
+      - "req.body"
+      - "req.params"
+    sinks:
+      - "eval"
+      - "Function"
+      - "setTimeout"
+      - "setInterval"
+      
+  ssrf:
+    id: "javascript/ssrf"
+    name: "服务端请求伪造"
+    description: "检测使用用户输入发起HTTP请求的漏洞"
+    severity: "HIGH"
+    cwe: ["CWE-918"]
+    cvss: 7.0
+    enabled: true
+    sources:
+      - "req.query"
+      - "req.body"
+      - "req.params"
+    sinks:
+      - "http.request"
+      - "https.request"
+      - "axios.get"
+      - "fetch"
+      
+  insecure-randomness:
+    id: "javascript/insecure-randomness"
+    name: "不安全的随机数生成"
+    description: "检测使用不安全的随机数生成器"
+    severity: "MEDIUM"
+    cwe: ["CWE-330"]
+    cvss: 5.0
+    enabled: true
+    patterns:
+      - "Math.random"

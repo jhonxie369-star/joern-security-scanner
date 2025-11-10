@@ -1,0 +1,6 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: sourceModel
+    data:
+      - ["org.kohsuke.stapler.bind", "JavaScriptMethod", True, "", "", "Annotated", "Parameter", "remote", "manual"]

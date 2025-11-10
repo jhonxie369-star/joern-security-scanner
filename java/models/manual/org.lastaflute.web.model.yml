@@ -1,0 +1,6 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: sourceModel
+    data:
+      - ["org.lastaflute.web", "Execute", False, "", "", "Annotated", "Parameter", "remote", "manual"]

@@ -1,0 +1,6 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: sinkModel
+    data:
+      - ["org.apache.shiro.jndi", "JndiTemplate", False, "lookup", "", "", "Argument[0]", "jndi-injection", "manual"]

@@ -1,0 +1,12 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: sinkModel
+    data:
+      - ["java.util.function", "Predicate", False, "test", "(Object)", "", "Argument[this]", "regex-use[0]", "manual"]
+
+  - addsTo:
+      pack: joern/java-all
+      extensible: neutralModel
+    data:
+      - ["java.util.function", "Function", "identity", "()", "summary", "manual"]

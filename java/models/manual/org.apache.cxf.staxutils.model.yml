@@ -1,0 +1,6 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: sinkModel
+    data:
+      - ["org.apache.cxf.staxutils", "StaxUtils", True, "read", "(File)", "", "Argument[0]", "path-injection", "manual"]

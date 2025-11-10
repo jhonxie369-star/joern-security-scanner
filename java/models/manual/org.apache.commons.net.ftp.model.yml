@@ -1,0 +1,13 @@
+extensions:
+  - addsTo:
+      pack: joern/java-all
+      extensible: sinkModel
+    data:
+      # FTP路径遍历相关的sink
+      - ["org.apache.commons.net.ftp", "FTPClient", True, "retrieveFile", "(String,OutputStream)", "", "Argument[0]", "path-injection", "manual"]
+      - ["org.apache.commons.net.ftp", "FTPClient", True, "storeFile", "(String,InputStream)", "", "Argument[0]", "path-injection", "manual"]
+      - ["org.apache.commons.net.ftp", "FTPClient", True, "deleteFile", "(String)", "", "Argument[0]", "path-injection", "manual"]
+      - ["org.apache.commons.net.ftp", "FTPClient", True, "listFiles", "(String)", "", "Argument[0]", "path-injection", "manual"]
+      - ["org.apache.commons.net.ftp", "FTPClient", True, "changeWorkingDirectory", "(String)", "", "Argument[0]", "path-injection", "manual"]
+      - ["org.apache.commons.net.ftp", "FTPClient", True, "makeDirectory", "(String)", "", "Argument[0]", "path-injection", "manual"]
+      - ["org.apache.commons.net.ftp", "FTPClient", True, "removeDirectory", "(String)", "", "Argument[0]", "path-injection", "manual"]

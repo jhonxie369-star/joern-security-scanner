@@ -1,0 +1,86 @@
+name: Java安全扫描器推荐规则扩展
+description: 基于CodeQL java-security-extended.qls的推荐规则
+
+# 当前已实现的规则 (4个)
+implemented:
+  - java/path-injection          # CWE-022 路径遍历
+  - java/sql-injection           # CWE-089 SQL注入  
+  - java/xss                     # CWE-079 跨站脚本
+  - java/command-injection       # CWE-078 命令注入
+
+# 高优先级推荐规则 (按严重程度排序)
+high_priority:
+  - java/unsafe-deserialization  # CWE-502 不安全反序列化 (9.8分)
+    description: "反序列化用户控制的数据可能导致远程代码执行"
+    severity: "CRITICAL"
+    models: "deserialization"
+    
+  - java/server-side-template-injection  # CWE-094 模板注入 (9.3分)
+    description: "服务端模板注入可能导致远程代码执行"
+    severity: "CRITICAL" 
+    models: "template-injection"
+    
+  - java/xxe                      # CWE-611 XML外部实体注入 (9.1分)
+    description: "XML外部实体注入可能导致信息泄露或SSRF"
+    severity: "CRITICAL"
+    models: "xxe"
+    
+  - java/ldap-injection          # CWE-090 LDAP注入 (8.8分)
+    description: "LDAP注入可能导致认证绕过"
+    severity: "HIGH"
+    models: "ldap-injection"
+    
+  - java/xpath-injection         # CWE-643 XPath注入 (8.8分)
+    description: "XPath注入可能导致信息泄露"
+    severity: "HIGH"
+    models: "xpath-injection"
+
+# 中优先级推荐规则
+medium_priority:
+  - java/unsafe-cert-trust       # CWE-273 不安全证书信任 (7.4分)
+    description: "禁用证书验证可能导致中间人攻击"
+    severity: "HIGH"
+    models: "cert-trust"
+    
+  - java/cleartext-storage       # CWE-312 明文存储敏感信息 (7.5分)
+    description: "敏感信息明文存储可能导致信息泄露"
+    severity: "MEDIUM"
+    models: "cleartext-storage"
+    
+  - java/hardcoded-credentials   # CWE-798 硬编码凭据 (7.8分)
+    description: "硬编码凭据可能导致认证绕过"
+    severity: "HIGH"
+    models: "hardcoded-credentials"
+    
+  - java/zip-slip                # CWE-022 Zip Slip攻击 (7.5分)
+    description: "解压缩时的路径遍历攻击"
+    severity: "HIGH"
+    models: "zip-slip"
+
+# 低优先级但有用的规则
+low_priority:
+  - java/insecure-randomness     # CWE-330 不安全随机数 (7.5分)
+    description: "使用不安全的随机数生成器"
+    severity: "MEDIUM"
+    
+  - java/log-injection           # CWE-117 日志注入 (5.3分)
+    description: "用户输入写入日志可能导致日志伪造"
+    severity: "LOW"
+    
+  - java/url-redirection         # CWE-601 开放重定向 (6.1分)
+    description: "不受控制的URL重定向"
+    severity: "MEDIUM"
+
+# 实现建议
+implementation_phases:
+  phase1: [java/unsafe-deserialization, java/server-side-template-injection, java/xxe]
+  phase2: [java/ldap-injection, java/xpath-injection, java/unsafe-cert-trust]
+  phase3: [java/cleartext-storage, java/hardcoded-credentials, java/zip-slip]
+  phase4: [java/insecure-randomness, java/url-redirection, java/log-injection]
+
+# 统计信息
+total_codeql_security_rules: 60+
+current_implemented: 4
+recommended_next: 10
+coverage_after_phase1: ~20%
+coverage_after_all_phases: ~35%
