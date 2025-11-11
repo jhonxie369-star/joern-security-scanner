@@ -165,14 +165,6 @@ joern --script javascript/JavaScriptSecurityScanner.sc --param projectPath=/path
 - **扫描速度**: 中等规模项目 <30s
 - **内存使用**: 通常 <1GB
 
-## 🤝 贡献指南
-
-1. Fork项目
-2. 创建功能分支: `git checkout -b feature/new-rule`
-3. 提交更改: `git commit -am 'Add new security rule'`
-4. 推送分支: `git push origin feature/new-rule`
-5. 创建Pull Request
-
 ## 📄 许可证
 
 MIT License - 详见 [LICENSE](LICENSE) 文件
