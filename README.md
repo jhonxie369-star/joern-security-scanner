@@ -18,15 +18,13 @@ joern-security-scanner/
 │   ├── JavaSecurityScanner.sc # 主扫描引擎
 │   ├── config/                # 扫描配置
 │   ├── models/                # 威胁模型定义
-│   ├── rules/                 # 安全检测规则
-│   └── reports/               # 报告生成器
+│   └── rules/                 # 安全检测规则
 ├── javascript/                # JavaScript安全扫描器
 │   ├── JavaScriptSecurityScanner.sc
 │   ├── config/                # JS扫描配置
 │   ├── models/                # JS威胁模型
 │   ├── rules/                 # JS安全规则
 │   └── lib/                   # 数据流分析库
-├── utils/                     # 通用工具
 └── README.md                  # 项目文档
 ```
 
